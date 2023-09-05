@@ -10,8 +10,8 @@ function model(sequelize) {
       autoIncrement: true,
       primaryKey: true,
     },
-    Name: { type: DataTypes.STRING, allowNull: false },
-    Email: { type: DataTypes.STRING, allowNull: false },
+    Name: { type: DataTypes.STRING(30), allowNull: false },
+    Email: { type: DataTypes.STRING(30), allowNull: false },
   };
   /* by default it pluralize the model, so it will tread it as 'People' and query will be like
      select * from People  (if you have pre existing table Person, then it won't get records)

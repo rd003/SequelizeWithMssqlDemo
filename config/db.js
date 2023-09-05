@@ -1,15 +1,20 @@
 const { Sequelize } = require("sequelize");
-const dbConfig = require("./database-config");
 const personModel = require("../models/person.model");
+require("dotenv").config();
 
-const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-  host: dbConfig.HOST,
-  port: dbConfig.PORT,
-  dialect: dbConfig.dialect,
-  dialectOptions: {
-    options: { encrypt: false },
-  },
-});
+const sequelize = new Sequelize(
+  process.env.DB,
+  process.env.USER,
+  process.env.PASSWORD,
+  {
+    host: process.env.HOST,
+    port: process.env.SQL_PORT,
+    dialect: process.env.DIALECT,
+    dialectOptions: {
+      options: { encrypt: false },
+    },
+  }
+);
 
 const db = {};
 db.Person = personModel(sequelize);
